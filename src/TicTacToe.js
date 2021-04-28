@@ -1,17 +1,9 @@
 import React from 'react';
-import Tile from './Components/Tile/tile'
+import GameBoard from './Components/GameBoard/gameBoard'
 
 function TicTacToeGame() {
-    const BoardStatus = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-
     return (
-        <div>
-            {
-                BoardStatus.map(symbol => (
-                    <Tile tileSymbol={symbol}/>   
-                ))
-            }
-        </div>
+        <GameBoard />
     )
 }
 
