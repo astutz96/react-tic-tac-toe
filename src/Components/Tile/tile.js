@@ -1,8 +1,8 @@
-import react from 'react';
+import React from 'react';
 
 function Tile(props){
     return (
-        <button>{props.tileSymbol}</button>
+        <button onClick={props.onClick}>{props.tileSymbol}</button>
     )
 }
 
