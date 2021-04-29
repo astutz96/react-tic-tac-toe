@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Tile from '../Tile/tile';
 
 function GameBoard(){
-    const BoardStatus = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
 
-    const onTileClick = () => {
-        console.log('Tile Clicked');
+    const boardVals = ['','','','','','','','',''];
+
+    const [board, setBoard] = useState(boardVals)
+    
+    const onTileClick = (tileIndex) => {
+        let newBoard = [...board];
+        newBoard[tileIndex] = "X";
+        setBoard(newBoard)
     }
     return(
         <div>
             {
-                BoardStatus.map((symbol, id) => (
+                board.map((symbol, id) => (
                     <Tile 
                         tileSymbol={symbol}
                         onClick={onTileClick}
+                        tileIndex ={id}
                         key={id}
                     />   
                 ))
@@ -22,4 +28,4 @@ function GameBoard(){
     )
 }
 
-export default GameBoard;
+export default GameBoard; 
