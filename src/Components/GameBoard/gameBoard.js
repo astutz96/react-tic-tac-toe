@@ -7,9 +7,9 @@ function GameBoard(){
 
     const [board, setBoard] = useState(boardVals)
     
-    const onTileClick = (tileIndex) => {
+    const onTileClick = (tileIndex, tileSymbol) => {
         let newBoard = [...board];
-        newBoard[tileIndex] = "X";
+        newBoard[tileIndex] = tileSymbol === 'X' ? 'O' : 'X'
         setBoard(newBoard)
     }
     return(
