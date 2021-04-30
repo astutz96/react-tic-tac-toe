@@ -3,29 +3,52 @@ import Tile from '../Tile/tile';
 
 function GameBoard(){
 
-    const boardVals = ['','','','','','','','',''];
+    const boardData = [
+        [
+            {symbol:'', position:'TL'},
+            {symbol:'', position:'TM'},
+            {symbol:'', position:'TR'}
+        ],
+        [
+            {symbol:'', position:'ML'},
+            {symbol:'', position:'MM'},
+            {symbol:'', position:'MR'}
+        ],
+        [
+            {symbol:'', position:'BL'},
+            {symbol:'', position:'BM'},
+            {symbol:'', position:'BR'}
+        ]
+    ];
 
-    const [board, setBoard] = useState(boardVals)
+    const [board, setBoard] = useState(boardData)
     
-    const onTileClick = (tileIndex, tileSymbol) => {
-        let newBoard = [...board];
-        newBoard[tileIndex] = tileSymbol === 'X' ? 'O' : 'X'
+    const onTileClick = (position) => {
+        let newBoard = board.map(row =>
+                row.map(col => (
+                        col.position === position ? 
+                            (col = {symbol: 'X', position: position}) : 
+                            col = {symbol: col.symbol, position: col.position}
+                    )   
+                ) 
+            )
         setBoard(newBoard)
     }
     return(
         <div>
-            {
-                board.map((symbol, id) => (
-                    <Tile 
-                        tileSymbol={symbol}
-                        onClick={onTileClick}
-                        tileIndex ={id}
-                        key={id}
-                    />   
-                ))
-            }
+            {board.map(row => 
+                <div> 
+                    {row.map((tileData) =>
+                        <Tile 
+                            tileData={tileData}
+                            onClick={onTileClick}
+                            key={tileData.position}
+                        />
+                    )} 
+                </div>
+            )}
         </div>
     )
 }
 
-export default GameBoard; 
+export default GameBoard;  

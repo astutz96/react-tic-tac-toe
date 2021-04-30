@@ -1,10 +1,11 @@
 import React from 'react';
 
 function Tile(props){
-    const {tileSymbol, onClick, tileIndex} = props; 
+    const {tileData, onClick} = props; 
     return (
-        <button onClick={() => onClick(tileIndex, tileSymbol)}>
-        {props.tileSymbol}</button>
+        <button onClick={() => onClick(tileData.position)}>
+        {tileData.symbol}</button>
+        
     )
 }
 
